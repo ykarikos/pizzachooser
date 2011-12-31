@@ -5,8 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'pizza.views.home', name='home'),
+    url(r'^$', 'chooser.views.home', name='home'),
     # url(r'^pizza/', include('pizza.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

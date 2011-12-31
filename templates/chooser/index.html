@@ -1,0 +1,7 @@
+{% if pizzerias %}
+    {% for pizzeria in pizzerias %}
+        <h1>{{pizzeria.name}}
+    {% endfor %}
+{% else %}
+    <p>No pizzerias are available.</p>
+{% endif %}
