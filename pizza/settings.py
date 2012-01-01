@@ -1,11 +1,13 @@
-# coding=utf-8
-# Django settings for pizza project.
+# Django settings for pizza chooser project.
+import os
 
-DEBUG = True
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Yrjö Kari-Koskinen', 'ykk@peruna.fi'),
+    # ('Mr Sysadmin', 'sysadmin@domain.tld'),
 )
 
 MANAGERS = ADMINS
@@ -13,9 +15,9 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'pizza',                      # Or path to database file if using sqlite3.
-        'USER': 'pizza',                      # Not used with sqlite3.
-        'PASSWORD': 'valkosipuli',                  # Not used with sqlite3.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -28,7 +30,7 @@ DATABASES = {
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'Europe/Helsinki'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -70,7 +72,7 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    "/Users/ykar/Documents/private/Projects/pizzavalitsin/static",
+    BASE_DIR + "/../static",
 )
 
 # List of finder classes that know how to find static files in
@@ -82,7 +84,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '!vo)mw+^tx47vq68!*p9e8fd#m*jfehramqv+nra^-ah3o=*8+'
+SECRET_KEY = 'secret'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -102,7 +104,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'pizza.urls'
 
 TEMPLATE_DIRS = (
-    "/Users/ykar/Documents/private/Projects/pizzavalitsin/templates"
+    BASE_DIR + "/../templates",
 )
 
 INSTALLED_APPS = (
@@ -140,3 +142,5 @@ LOGGING = {
         },
     }
 }
+
+from local_settings import *
