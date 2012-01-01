@@ -3,8 +3,8 @@
   <head>
     <title>Pizza chooser</title>
 
-<script src="data.php"></script>
-<script src="code.js"></script>
+<script src="data.js"></script>
+<script src="/static/code.js"></script>
 
 <style>
 table, th, td {
@@ -37,21 +37,25 @@ td ul {
 
 <tr><td>
 <ul>
-    {% for t in toppings %}
+    {% for topping in toppings %}
+    {% with t=topping.name|cut:" " %}
 <li>
-<input type="checkbox" id="{{t}}On" onClick="mustHave(this)">
-<label for="{{t}}On" id="{{t}}OnLabel">{{t}}</label>
+<input type="checkbox" id="{{ t }}On" onClick="mustHave(this)">
+<label for="{{t}}On" id="{{t}}OnLabel">{{ topping }}</label>
 </li>
+    {% endwith %}
     {% endfor %}
 </ul>
 </td>
 <td>
 <ul>
-    {% for t in toppings %}
+    {% for topping in toppings %}
+    {% with t=topping.name|cut:" " %}
 <li>
 <input type="checkbox" id="{{t}}Off" onClick="notAllowed(this)">
-<label for="{{t}}Off" id="{{t}}OffLabel">{{t}}</label>
+<label for="{{t}}Off" id="{{t}}OffLabel">{{ topping }}</label>
 </li>
+    {% endwith %}
     {% endfor %}
 <ul>
 </td>
@@ -81,3 +85,7 @@ td ul {
 {% else %}
     <p>No pizzerias are available.</p>
 {% endif %}
+
+</body>
+</html>
+

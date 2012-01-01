@@ -1,8 +1,8 @@
-var notAllowedFillings = new Array();
-var mustHaveFillings = new Array();
+var notAllowedToppings = new Array();
+var mustHaveToppings = new Array();
 for (var p in pizzas) {
-    notAllowedFillings[pizzas[p]] = new Array();
-    mustHaveFillings[pizzas[p]] = new Array();
+    notAllowedToppings[pizzas[p]] = new Array();
+    mustHaveToppings[pizzas[p]] = new Array();
 }
 
 
@@ -34,26 +34,26 @@ function enable(id) {
 
 function mustHave(checkbox) {
     var f = checkbox.id.substring(0, checkbox.id.length-2);
-    var fillingPizzas = filling[f];
+    var toppingPizzas = topping[f];
     
     if (checkbox.checked) {
         disable(f + "Off");
         mustHaveCount++;
-        for (var p in fillingPizzas) {
-            mustHaveFillings[fillingPizzas[p]].push(f);
+        for (var p in toppingPizzas) {
+            mustHaveToppings[toppingPizzas[p]].push(f);
         }
     } else {
         mustHaveCount--;
         enable(f + "Off");
         for (var p in pizzas) {
             var newArray = new Array();
-            oldFillings = mustHaveFillings[pizzas[p]]
-            for (var f2 in oldFillings) {
-                if (oldFillings[f2] != f) {
-                    newArray.push(oldFillings[f2]);
+            oldToppings = mustHaveToppings[pizzas[p]]
+            for (var f2 in oldToppings) {
+                if (oldToppings[f2] != f) {
+                    newArray.push(oldToppings[f2]);
                 }
             }
-            mustHaveFillings[pizzas[p]] = newArray;
+            mustHaveToppings[pizzas[p]] = newArray;
         }
     }
     updateStates();
@@ -63,24 +63,24 @@ function mustHave(checkbox) {
 
 function notAllowed(checkbox) {
     var f = checkbox.id.substring(0, checkbox.id.length-3);
-    var fillingPizzas = filling[f];
+    var toppingPizzas = topping[f];
     
     if (checkbox.checked) {
         disable(f + "On");
-        for (var p in fillingPizzas) {
-            notAllowedFillings[fillingPizzas[p]].push(f);
+        for (var p in toppingPizzas) {
+            notAllowedToppings[toppingPizzas[p]].push(f);
         }
     } else {
         enable(f + "On");
         for (var p in pizzas) {
             var newArray = new Array();
-            oldFillings = notAllowedFillings[pizzas[p]]
-            for (var f2 in oldFillings) {
-                if (oldFillings[f2] != f) {
-                    newArray.push(oldFillings[f2]);
+            oldToppings = notAllowedToppings[pizzas[p]]
+            for (var f2 in oldToppings) {
+                if (oldToppings[f2] != f) {
+                    newArray.push(oldToppings[f2]);
                 }
             }
-            notAllowedFillings[pizzas[p]] = newArray;
+            notAllowedToppings[pizzas[p]] = newArray;
         }
     }
     updateStates();
@@ -90,13 +90,13 @@ function notAllowed(checkbox) {
 function updateStates() {
     var mustHaveSet = 0;
     for (var p in pizzas) {
-        if (mustHaveFillings[pizzas[p]].length > 0) {
+        if (mustHaveToppings[pizzas[p]].length > 0) {
             mustHaveSet = 1;
         }
 
-        if (notAllowedFillings[pizzas[p]].length > 0) {
+        if (notAllowedToppings[pizzas[p]].length > 0) {
             pizzaStates[pizzas[p]] = NO_SHOW;
-        } else if (mustHaveFillings[pizzas[p]].length == mustHaveCount) {
+        } else if (mustHaveToppings[pizzas[p]].length == mustHaveCount) {
             pizzaStates[pizzas[p]] = SHOW;
         } else {
             pizzaStates[pizzas[p]] = SHOW_DEFAULT;
