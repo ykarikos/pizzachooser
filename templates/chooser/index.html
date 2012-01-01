@@ -1,6 +1,15 @@
 {% if pizzerias %}
-    {% for pizzeria in pizzerias %}
-        <h1>{{pizzeria.name}}
+<p>
+    {% for p in pizzerias %}
+        <h1>{{p.name}}</h1>
+	  <ul>
+	  {% for pizza in p.pizza_set.all %}
+	  <li>{{pizza.number}}. {{pizza.name}}<br>
+	    {% for t in pizza.toppings.all %}
+	    {{t.name}}
+	    {% endfor %}
+	  {% endfor %}
+	  </ul>
     {% endfor %}
 {% else %}
     <p>No pizzerias are available.</p>
