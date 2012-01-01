@@ -1,13 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pizza chooser</title>
+
+<script src="data.php"></script>
+<script src="code.js"></script>
+
+<style>
+table, th, td {
+      border: 1px solid;
+      border-collapse: collapse;
+      padding: 2px 10px;
+}
+
+td li {
+      list-style: none;
+}
+td ul {
+      margin: 0;
+      padding: 0;
+}
+</style>
+  </head>
+
+  <body>
+
+    <h1>Pizza chooser</h1>
+
+{% if toppings %}
+
+<table>
+<tr>
+<th>must have</th>
+<th>must not have</th>
+</tr>
+
+<tr><td>
+<ul>
+    {% for t in toppings %}
+<li>
+<input type="checkbox" id="{{t}}On" onClick="mustHave(this)">
+<label for="{{t}}On" id="{{t}}OnLabel">{{t}}</label>
+</li>
+    {% endfor %}
+</ul>
+</td>
+<td>
+<ul>
+    {% for t in toppings %}
+<li>
+<input type="checkbox" id="{{t}}Off" onClick="notAllowed(this)">
+<label for="{{t}}Off" id="{{t}}OffLabel">{{t}}</label>
+</li>
+    {% endfor %}
+<ul>
+</td>
+</tr>
+</table>
+
+
+{% else %}
+    <p>No toppings are available.</p>
+{% endif %}
+
 {% if pizzerias %}
-<p>
     {% for p in pizzerias %}
-        <h1>{{p.name}}</h1>
+        <h2>{{p.name}}</h2>
 	  <ul>
 	  {% for pizza in p.pizza_set.all|dictsort:"number" %}
-	  <li>{{pizza.number}}. {{pizza.name}}<br>
+	  <li id="pizza{{pizza.id}}">{{pizza.number}}. {{pizza.name}}
+          <ul>
 	    {% for t in pizza.toppings.all %}
-	    {{t.name}}
+	    <li>{{t.name}}</li>
 	    {% endfor %}
+	  </ul>
+	  </li>
 	  {% endfor %}
 	  </ul>
     {% endfor %}
