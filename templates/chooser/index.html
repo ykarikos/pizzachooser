@@ -69,7 +69,7 @@ td ul {
 
 {% if pizzerias %}
     {% for p in pizzerias %}
-        <h2>{{p.name}}</h2>
+        <h2>{% if p.url %}<a href="{{p.url}}">{{p.name}}</a>{% else %}{{p.name}}{% endif %}</h2>
 	  <ul>
 	  {% for pizza in p.pizza_set.all|dictsort:"number" %}
 	  <li id="pizza{{pizza.id}}">{{pizza.number}}. {{pizza.name}}
