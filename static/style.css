@@ -1,0 +1,61 @@
+body {
+  font-family: Verdana, sans-serif;
+  font-size: 0.8125em;
+}
+
+#toppings {
+  float: left;
+}
+
+#pizzas {
+  padding-left: 20px;
+  column-count: 4;
+  -moz-column-count: 4;
+  -webkit-column-count: 4;
+  height: 650px;
+}
+
+#pizzas ul {
+  padding: 0;
+}
+
+#pizzas ul li {
+  list-style: none;
+  border: 1px solid #888;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 3px;
+  background: #fed;
+}
+
+#pizzas ul ul {
+  padding-left: 10px;
+}
+
+#pizzas ul ul li {
+  border: 0;
+  display: inline;
+  padding: 0;
+}
+
+
+table, th, td {
+      border: 1px solid;
+      border-collapse: collapse;
+      padding: 2px 10px;
+}
+
+td li {
+      list-style: none;
+}
+td ul {
+      margin: 0;
+      padding: 0;
+}
+
+table .must {
+  background: #efe;
+}
+table .not {
+  background: #fee;
+}
