@@ -6,9 +6,16 @@
 <script src="data.js"></script>
 <script src="/static/code.js"></script>
 <link rel="stylesheet" href="/static/style.css" type="text/css" media="screen">
-  </head>
-
-  <body>
+<script type="text/javascript">
+function resizeColumns() {
+    var height = document.documentElement.clientHeight;
+    height -= 25;
+    document.getElementById('pizzas').style.height = height + "px";
+}
+window.onresize = resizeColumns;
+</script>
+</head>
+<body onLoad="resizeColumns()">
 
 <p>
 <a href="http://github.com/ykarikos/pizzachooser"><img style="position: absolute; top:
