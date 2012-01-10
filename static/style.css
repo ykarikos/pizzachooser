@@ -38,6 +38,13 @@ body {
   padding: 0;
 }
 
+#pizzas ul ul li:after {
+  content: ", ";
+}
+
+#pizzas ul ul li.last:after {
+  content: "";
+}
 
 table, th, td {
       border: 1px solid;

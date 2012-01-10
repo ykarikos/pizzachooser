@@ -74,7 +74,7 @@ alt="Fork me on GitHub"></a>
 	  <li id="pizza{{pizza.id}}">{{pizza.number}}. {{pizza.name}}
           <ul>
 	    {% for t in pizza.toppings.all %}
-	    <li>{{t.name}}</li>
+	    <li{% if forloop.last %}class="last"{% endif %}>{{t.name}}</li>
 	    {% endfor %}
 	  </ul>
 	  </li>
