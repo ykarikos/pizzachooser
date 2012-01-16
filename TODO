@@ -1,3 +1,8 @@
 TODO
+ - use column-width instead of column-count
+   http://www.quirksmode.org/css/multicolumn.html
+ - set up break-before, break-after and break-inside
+   http://www.w3.org/TR/css3-multicol/#column-breaks
+ - Do not show Pizzeria name if no pizzas are shown
  - Fancy look and feel
  - Tests
