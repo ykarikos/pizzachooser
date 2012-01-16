@@ -8,24 +8,30 @@ body {
 }
 
 #pizzas {
-  padding-left: 20px;
-  column-count: 4;
-  -moz-column-count: 4;
-  -webkit-column-count: 4;
+  padding-left: 20px; 
+  column-width: 170px;
+  -moz-column-width: 170px;
+  -webkit-column-width: 170px;
   height: 680px;
 }
 
 #pizzas ul {
   padding: 0;
+  margin: 0;
 }
 
 #pizzas ul li {
+  width: 168px;
   list-style: none;
   border: 1px solid #888;
   border-radius: 5px;
   margin-bottom: 5px;
   padding: 3px;
   background: #fed;
+  column-break-inside: avoid;
+  -moz-column-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+   display: inline-block;
 }
 
 #pizzas ul ul {
