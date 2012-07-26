@@ -1,2 +1,3 @@
 *.pyc
 pizza/local_settings.py
+*~
